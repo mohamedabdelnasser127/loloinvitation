@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Hero } from "@/components/chronicle/Hero";
 import { Story } from "@/components/chronicle/Story";
 import { Timeline } from "@/components/chronicle/Timeline";
+import { KokoSection } from "@/components/chronicle/KokoSection";
 import { Scrapbook } from "@/components/chronicle/Scrapbook";
 import { Proclamation } from "@/components/chronicle/Proclamation";
 import { Footer } from "@/components/chronicle/Footer";
@@ -53,6 +54,7 @@ function Index() {
         <Hero guestName={guestName} onUnseal={setGuestName} />
         <Story />
         <Timeline />
+        <KokoSection />
         <Scrapbook />
         <Proclamation guestName={guestName} />
         <Footer />

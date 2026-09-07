@@ -51,7 +51,6 @@ export function SecretMessage() {
         aria-label="Open the secret love letter"
       >
         <LockKeyhole className="size-4" aria-hidden />
-        <span>Secret letter</span>
       </button>
 
       {isOpen && (

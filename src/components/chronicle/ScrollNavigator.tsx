@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const chapters = [
   { id: "story", label: "The letter" },
   { id: "journey", label: "The journey" },
+  { id: "koko", label: "Koko" },
   { id: "scrapbook", label: "The scrapbook" },
   { id: "rsvp", label: "The invitation" },
 ];

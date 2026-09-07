@@ -10,6 +10,7 @@ import khwla1 from "@/assets/withKhwla/meKhwla-1.jpeg";
 import khwla2 from "@/assets/withKhwla/meKhwla-2.jpeg";
 import khwla3 from "@/assets/withKhwla/meKhwla-3.jpeg";
 import khwla4 from "@/assets/withKhwla/meKhwla-4.jpeg";
+import aya1 from "@/assets/meAya/WhatsApp Image 2026-09-07 at 10.56.11 PM.jpeg";
 
 export const photoTransforms = new Map<string, string>([
   [aseel2, "rotate(270deg)"],
@@ -51,8 +52,8 @@ export const timeline = [
   },
   {
     year: "Chapter Two",
-    title: "Me with Aseel",
-    body: "A collection of meaningful moments, shared laughter, and memories created together.",
+    title: "Me with Aseel and Eman",
+    body: "A collection of meaningful moments, shared laughter, and memories created together with Aseel and Eman.",
     image: aseel2,
     collection: [aseel2, aseel3],
     imagePosition: "center 28%",
@@ -68,6 +69,14 @@ export const timeline = [
   },
   {
     year: "Chapter Four",
+    title: "Me with Aya",
+    body: "A collection of warm moments, shared smiles, and memories made with Aya.",
+    image: aya1,
+    collection: [aya1],
+    imagePosition: "center 28%",
+  },
+  {
+    year: "Chapter Five",
     title: "Me with My Friends",
     body: "The friendships, joyful moments, and shared adventures that continue to make life special.",
     image: friends1,

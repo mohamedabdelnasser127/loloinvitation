@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Feather } from "lucide-react";
 
+import heroLeaves from "@/assets/hero-leaves.jpg";
 import { Ornament } from "./Ornament";
 import { invitation } from "./content";
 
@@ -54,7 +55,10 @@ export function Hero({
   }
 
   return (
-    <section className="night-vignette relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-20">
+    <section
+      className="hero-leaves-background relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-20"
+      style={{ backgroundImage: `url("${heroLeaves}")` }}
+    >
       <p className="absolute top-6 left-6 max-w-[12rem] text-left text-[0.62rem] leading-relaxed tracking-[0.16em] text-paper/55 uppercase sm:top-8 sm:left-8">
         {invitation.dateNumeric} · {invitation.timeShort} · {invitation.venue}
       </p>
@@ -65,7 +69,7 @@ export function Hero({
         transition={{ duration: 1.1, ease: EASE, delay: 0.15 }}
         style={{ perspective: 1200 }}
       >
-        <div className="paper-card relative px-6 py-10 text-center sm:px-12">
+        <div className="paper-card relative rounded-3xl px-6 py-10 text-center sm:px-12">
           <span className="eyebrow absolute top-6 right-6 hidden rounded-full border border-border px-3 py-1 text-muted-foreground sm:block">
             No. 020
           </span>
