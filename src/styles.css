@@ -266,10 +266,17 @@
   .koko-card-image {
     display: block;
     width: 100%;
-    height: 11rem;
+    height: 14rem;
     object-fit: cover;
-    object-position: center 30%;
     margin-bottom: 1.5rem;
+  }
+
+  .koko-card-image-window {
+    object-position: center 42%;
+  }
+
+  .koko-card-image-sun {
+    object-position: center 16%;
   }
 
   .koko-card > :not(.koko-card-image) {

@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 
 import koko from "@/assets/koko.jpg";
+import kokoSun from "@/assets/koko-sun.jpeg";
+import kokoWindow from "@/assets/koko-window.jpeg";
 import { Eyebrow, Ornament, SectionHeading } from "./Ornament";
 import { Reveal } from "./Reveal";
 
@@ -28,7 +30,11 @@ export function KokoSection() {
             whileHover={{ rotate: -4, y: -8, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 180, damping: 18 }}
           >
-            <img src={koko} alt="Koko the cat" className="koko-card-image" />
+            <img
+              src={kokoWindow}
+              alt="Koko by the window"
+              className="koko-card-image koko-card-image-window"
+            />
             <p className="eyebrow text-ember">Meet Koko</p>
             <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-ink">
               Small paws, unforgettable personality.
@@ -43,7 +49,11 @@ export function KokoSection() {
             whileHover={{ rotate: 4, y: -8, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 180, damping: 18 }}
           >
-            <img src={koko} alt="Koko the cat" className="koko-card-image" />
+            <img
+              src={kokoSun}
+              alt="Koko relaxing in the sunlight"
+              className="koko-card-image koko-card-image-sun"
+            />
             <p className="eyebrow text-ember">A Favorite Memory</p>
             <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-ink">
               Always ready for a close-up.
