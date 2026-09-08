@@ -64,8 +64,8 @@ function TimelineCard({ entry, index }: { entry: TimelineEntry; index: number })
               style={{
                 objectPosition: entry.imagePosition,
                 transform:
-                  photoCardTransforms.get(entry.image) ??
-                  photoTransforms.get(entry.image) ??
+                  photoCardTransforms?.get(entry.image) ??
+                  photoTransforms?.get(entry.image) ??
                   undefined,
                 transformOrigin: "center",
               }}
@@ -98,7 +98,7 @@ function TimelineCard({ entry, index }: { entry: TimelineEntry; index: number })
             alt={`${entry.title} photograph ${selectedImage + 1}`}
             className="max-h-[55vh] w-full object-contain"
             style={{
-              transform: photoTransforms.get(selectedPhoto) ?? undefined,
+              transform: photoTransforms?.get(selectedPhoto) ?? undefined,
               transformOrigin: "center",
             }}
           />
@@ -121,7 +121,7 @@ function TimelineCard({ entry, index }: { entry: TimelineEntry; index: number })
                 alt=""
                 className="aspect-[4/3] w-full object-contain"
                 style={{
-                  transform: photoTransforms.get(image) ?? undefined,
+                  transform: photoTransforms?.get(image) ?? undefined,
                   transformOrigin: "center",
                 }}
               />

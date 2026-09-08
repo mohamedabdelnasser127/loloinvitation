@@ -28,7 +28,7 @@ export function Proclamation({ guestName }: { guestName: string }) {
   const invitedName = guestName.trim() || "Guest";
 
   return (
-    <section id="rsvp" className="bg-secondary/50 px-4 py-24 sm:py-32">
+    <section id="rsvp" className="proclamation-section relative bg-secondary/50 px-4 py-24 sm:py-32">
       <div className="mx-auto max-w-4xl">
         <Reveal className="paper-card px-6 py-12 sm:px-12">
           <div className="flex flex-col items-center gap-4">
@@ -44,9 +44,11 @@ export function Proclamation({ guestName }: { guestName: string }) {
             {details.map(({ icon: Icon, label, lines }) => (
               <StaggerItem key={label}>
                 <motion.div
-                  className="h-full border border-border bg-secondary/60 p-6 text-center"
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 240, damping: 22 }}
+                  className="proclamation-card h-full p-6 text-center"
+                  whileHover={{ y: -6, scale: 1.012, rotateX: 3 }}
+                  whileTap={{ scale: 0.985, y: -2, rotateX: 1 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 24 }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
                   <Icon className="mx-auto size-5 text-ember" aria-hidden />
                   <p className="eyebrow mt-3 text-muted-foreground">{label}</p>
@@ -63,8 +65,8 @@ export function Proclamation({ guestName }: { guestName: string }) {
             ))}
           </Stagger>
 
-          <p className="mt-8 text-center text-sm text-muted-foreground">
-            Dress: {invitation.dress}
+          <p className="proclamation-dress mt-8 text-center text-sm font-semibold uppercase tracking-[0.18em] text-ember">
+            Dress code: Light colors
           </p>
 
           <div className="mt-10 border-t border-border pt-10 text-center">

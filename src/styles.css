@@ -279,7 +279,7 @@
     object-position: center 16%;
   }
 
-  .koko-card > :not(.koko-card-image) {
+  .koko-card> :not(.koko-card-image) {
     margin-left: 1rem;
     margin-right: 1rem;
   }
@@ -299,6 +299,7 @@
   }
 
   @media (max-width: 639px) {
+
     .koko-card-left,
     .koko-card-right {
       transform: rotate(0);
@@ -368,6 +369,7 @@
       opacity: 0;
       transform: translateY(1rem) scale(0.96);
     }
+
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
@@ -399,7 +401,7 @@
     scroll-margin-top: 1rem;
   }
 
-  .scroll-navigator a > span:first-child {
+  .scroll-navigator a>span:first-child {
     position: relative;
     z-index: 1;
     display: block;
@@ -415,7 +417,7 @@
       box-shadow 300ms ease;
   }
 
-  .scroll-navigator a.is-active > span:first-child {
+  .scroll-navigator a.is-active>span:first-child {
     transform: scale(1.45);
     background: var(--ember);
     border-color: var(--ember);
@@ -514,6 +516,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+
   h1,
   h2,
   h3,
@@ -577,12 +580,10 @@
 .section-glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    115deg,
-    transparent 35%,
-    color-mix(in oklab, var(--gilt) 12%, transparent) 50%,
-    transparent 65%
-  );
+  background: linear-gradient(115deg,
+      transparent 35%,
+      color-mix(in oklab, var(--gilt) 12%, transparent) 50%,
+      transparent 65%);
   transform: translateX(-100%);
 }
 
@@ -611,9 +612,11 @@
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25);
   }
+
   28% {
     opacity: 0.95;
   }
+
   100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(3.5);
@@ -624,6 +627,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -634,9 +638,11 @@
     opacity: 0;
     transform: rotate(var(--spark-angle)) translateY(0) scale(0.4);
   }
+
   18% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
     transform: rotate(var(--spark-angle)) translateY(calc(var(--spark-distance) * -1)) scale(0.1);
@@ -681,8 +687,7 @@
 
   to {
     opacity: 0;
-    transform: translate(-50%, -50%) rotate(var(--sparkle-angle))
-      translateY(calc(var(--sparkle-distance) * -1)) scale(0.15);
+    transform: translate(-50%, -50%) rotate(var(--sparkle-angle)) translateY(calc(var(--sparkle-distance) * -1)) scale(0.15);
   }
 }
 
@@ -710,11 +715,9 @@
 
 @utility night-vignette {
   background:
-    radial-gradient(
-      ellipse 70% 60% at 50% 42%,
+    radial-gradient(ellipse 70% 60% at 50% 42%,
       color-mix(in oklab, var(--ember) 26%, transparent),
-      transparent 70%
-    ),
+      transparent 70%),
     var(--night);
 }
 
@@ -730,4 +733,163 @@
   content: "";
   background: color-mix(in oklab, var(--night) 28%, transparent);
   pointer-events: none;
+}
+
+.proclamation-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(126, 100, 78, 0.22);
+  border-radius: 1.35rem;
+  background: linear-gradient(180deg, rgba(246, 242, 236, 0.95), rgba(236, 229, 220, 0.82));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 18px 36px -28px rgba(86, 58, 34, 0.32),
+    0 8px 16px rgba(110, 82, 52, 0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.proclamation-card::before {
+  position: absolute;
+  inset: -16% -8% auto auto;
+  width: 6rem;
+  height: 6rem;
+  content: "";
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(221, 161, 90, 0.38), transparent 63%);
+  opacity: 0;
+  transform: translate(20%, -12%) scale(0.72);
+  transition: opacity 200ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+
+.proclamation-card:hover {
+  border-color: rgba(152, 99, 63, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    0 18px 30px rgba(90, 63, 42, 0.12),
+    0 10px 20px rgba(110, 82, 52, 0.08);
+}
+
+.proclamation-card:hover::before,
+.proclamation-card:active::before {
+  opacity: 1;
+  transform: translate(0, 0) scale(1.08);
+}
+
+.proclamation-card:active {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 10px 18px rgba(90, 63, 42, 0.08);
+}
+
+.proclamation-card svg {
+  color: var(--ember);
+  opacity: 0.96;
+}
+
+.proclamation-card .eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--muted-foreground);
+}
+
+.proclamation-card p {
+  color: var(--ink);
+}
+
+.proclamation-card p:last-child {
+  margin-bottom: 0;
+}
+
+.proclamation-dress {
+  position: relative;
+  display: block;
+  margin: 2.4rem auto 0;
+  width: fit-content;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  color: rgba(160, 92, 52, 0.96);
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  -webkit-text-stroke: 0.22px rgba(160, 92, 52, 0.56);
+  text-shadow:
+    0 0 0 rgba(255, 255, 255, 0),
+    0 0 0.12rem rgba(160, 92, 52, 0.18),
+    0 0 0.5rem rgba(160, 92, 52, 0.12);
+  filter: drop-shadow(0 0 0.24rem rgba(160, 92, 52, 0.15));
+  transform: translateY(0);
+  transition: transform 180ms ease, filter 180ms ease, letter-spacing 180ms ease;
+}
+
+.proclamation-dress::before,
+.proclamation-dress::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  content: "";
+  border: 1px solid rgba(160, 92, 52, 0.54);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.proclamation-dress::before {
+  width: calc(100% + 1.8rem);
+  height: calc(100% + 0.9rem);
+  transform: translate(-50%, -50%) rotate(-6deg);
+  box-shadow: 0 0 0.8rem rgba(160, 92, 52, 0.16), 0 0 1.2rem rgba(160, 92, 52, 0.08);
+  animation: proclamation-dress-glow 4s ease-in-out infinite alternate;
+}
+
+.proclamation-dress::after {
+  width: calc(100% + 2.8rem);
+  height: calc(100% + 1.4rem);
+  transform: translate(-50%, -50%) rotate(6deg);
+  border-color: rgba(160, 92, 52, 0.28);
+  box-shadow: 0 0 0.8rem rgba(160, 92, 52, 0.08);
+  animation: proclamation-dress-glow-alt 5s ease-in-out infinite alternate;
+}
+
+@keyframes proclamation-dress-glow {
+  0% {
+    transform: translate(-50%, -50%) rotate(-6deg) scale(0.98);
+    box-shadow: 0 0 0.3rem rgba(160, 92, 52, 0.08), 0 0 0.8rem rgba(160, 92, 52, 0.12);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(4deg) scale(1.02);
+    box-shadow: 0 0 0.8rem rgba(160, 92, 52, 0.18), 0 0 1.2rem rgba(160, 92, 52, 0.14);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1.01);
+    box-shadow: 0 0 0.5rem rgba(160, 92, 52, 0.12), 0 0 1rem rgba(160, 92, 52, 0.1);
+    opacity: 0.94;
+  }
+}
+
+@keyframes proclamation-dress-glow-alt {
+  0% {
+    transform: translate(-50%, -50%) rotate(6deg) scale(1.02);
+    opacity: 0.72;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(-4deg) scale(0.99);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(3deg) scale(1.03);
+    opacity: 0.8;
+  }
+}
+
+@media (min-width: 640px) {
+  .proclamation-dress {
+    font-size: 0.9rem;
+  }
 }

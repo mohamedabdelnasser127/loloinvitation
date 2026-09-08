@@ -74,13 +74,6 @@ export function SecretMessage() {
             {!unlocked ? (
               <>
                 <p className="eyebrow text-ember">Sealed with love</p>
-                <h2 id="secret-message-title" className="mt-3 text-3xl font-semibold">
-                  A private note for Alaa
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Someone special left something here for you. Enter the secret word to reveal the
-                  hidden letter.
-                </p>
                 <label
                   htmlFor="secret-password"
                   className="eyebrow mt-6 block text-muted-foreground"
@@ -107,7 +100,7 @@ export function SecretMessage() {
                   onClick={unlockMessage}
                   className="eyebrow mt-5 w-full rounded-sm bg-ember px-5 py-4 text-primary-foreground"
                 >
-                  Unlock his message
+                  Unlock message
                 </button>
               </>
             ) : (

@@ -3,8 +3,9 @@ import scrap2 from "@/assets/scrap-2.jpg";
 import scrap3 from "@/assets/scrap-3.jpg";
 import friends1 from "@/assets/meFriends/meFriends-1.jpeg";
 import friends2 from "@/assets/meFriends/meFriends-2.jpeg";
-import aseel2 from "@/assets/with aseel/meAseel-2.jpeg";
-import aseel3 from "@/assets/with aseel/meAseel-3.jpeg";
+import aseel1 from "@/assets/with aseel/meAseel-2.jpeg";
+import aseel2 from "@/assets/with aseel/meAseel-4.jpeg";
+import aseel3 from "@/assets/with aseel/meAseel-5.jpeg";
 import baby1 from "@/assets/meBaby/meBaby-1.jpeg";
 import khwla1 from "@/assets/withKhwla/meKhwla-1.jpeg";
 import khwla2 from "@/assets/withKhwla/meKhwla-2.jpeg";
@@ -12,14 +13,9 @@ import khwla3 from "@/assets/withKhwla/meKhwla-3.jpeg";
 import khwla4 from "@/assets/withKhwla/meKhwla-4.jpeg";
 import aya1 from "@/assets/meAya/WhatsApp Image 2026-09-07 at 10.56.11 PM.jpeg";
 
-export const photoTransforms = new Map<string, string>([
-  [aseel2, "rotate(270deg)"],
-  [aseel3, "rotate(270deg)"],
-]);
+export const photoTransforms = new Map<string, string>();
 
-export const photoCardTransforms = new Map<string, string>([
-  [aseel2, "rotate(270deg) scale(2.15)"],
-]);
+export const photoCardTransforms = new Map<string, string>();
 
 /**
  * All copy and event details for the invitation live here so they can be
