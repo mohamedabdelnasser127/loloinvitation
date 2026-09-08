@@ -26,6 +26,7 @@ export function SoundControl() {
 
   return (
     <>
+      {!isPlaying && <span className="sound-control-hint">Press to play music</span>}
       <button
         type="button"
         className="sound-control"
