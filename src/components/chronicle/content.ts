@@ -90,7 +90,7 @@ export const scrapbook = [
   },
   {
     src: scrap5,
-    caption: "Karaoke to Sing",
+    caption: "Karaoke Night",
     note: "karaoke to sing your heart out.",
   },
   {
