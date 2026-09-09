@@ -1000,3 +1000,96 @@
     font-size: 0.9rem;
   }
 }
+.palette-control {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 8.75rem;
+  z-index: 999;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid var(--gilt);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ember);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--night) 14%, transparent);
+  transition: background-color 250ms ease, color 250ms ease, transform 250ms ease;
+}
+
+.palette-control:hover {
+  background: var(--ember);
+  color: var(--paper);
+  transform: scale(1.04) rotate(12deg);
+}
+
+.palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: color-mix(in oklab, var(--night) 50%, transparent);
+}
+
+.palette-panel {
+  position: relative;
+  width: min(100%, 28rem);
+  max-height: min(90vh, 42rem);
+  overflow-y: auto;
+  border: 1px solid var(--gilt);
+  border-radius: 1rem;
+  background: var(--paper);
+  padding: 2rem;
+  color: var(--ink);
+  box-shadow: 0 24px 80px color-mix(in oklab, var(--night) 35%, transparent);
+}
+
+.palette-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--ember);
+}
+
+.palette-close:hover {
+  background: var(--paper-deep);
+}
+
+.palette-fields {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.palette-field {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--gilt) 70%, transparent);
+  border-radius: 0.65rem;
+  background: color-mix(in oklab, var(--paper-deep) 35%, transparent);
+  padding: 0.65rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.palette-field input[type="color"] {
+  width: 2.25rem;
+  height: 2.25rem;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.palette-field code {
+  min-width: 4.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+}

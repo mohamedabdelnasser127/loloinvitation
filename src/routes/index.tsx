@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { Hero } from "@/components/chronicle/Hero";
@@ -15,6 +15,7 @@ import { SecretMessage } from "@/components/chronicle/SecretMessage";
 import { AutoScroll } from "@/components/chronicle/AutoScroll";
 import { SoundControl } from "@/components/chronicle/SoundControl";
 import { ChocolateClickSound } from "@/components/chronicle/ChocolateClickSound";
+import { PaletteCustomizer } from "@/components/chronicle/PaletteCustomizer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,6 +51,7 @@ function Index() {
       <AutoScroll />
       <SoundControl />
       <ChocolateClickSound />
+      <PaletteCustomizer />
       <main className="bg-background text-foreground">
         <Hero guestName={guestName} onUnseal={setGuestName} />
         <Story />
@@ -62,3 +64,5 @@ function Index() {
     </>
   );
 }
+
+
