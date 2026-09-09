@@ -20,7 +20,7 @@ export function SecretMessage() {
 
   function unlockMessage() {
     if (password.trim().toLowerCase() !== secretPassword) {
-      setError("That is not the secret word. Try again, my love.");
+      setError("That is not the secret word. Try again.");
       return;
     }
 
@@ -73,12 +73,11 @@ export function SecretMessage() {
 
             {!unlocked ? (
               <>
-                <p className="eyebrow text-ember">Sealed with love</p>
                 <label
                   htmlFor="secret-password"
                   className="eyebrow mt-6 block text-muted-foreground"
                 >
-                  Secret password
+                  password
                 </label>
                 <input
                   id="secret-password"
@@ -100,7 +99,7 @@ export function SecretMessage() {
                   onClick={unlockMessage}
                   className="eyebrow mt-5 w-full rounded-sm bg-ember px-5 py-4 text-primary-foreground"
                 >
-                  Unlock message
+                  Unlock
                 </button>
               </>
             ) : (
