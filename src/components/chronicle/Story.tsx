@@ -61,7 +61,8 @@ export function Story() {
                 <motion.div
                   className="absolute inset-0 w-[200%] h-[200%] top-[-50%] left-[-50%] z-0"
                   style={{
-                    background: "conic-gradient(from 0deg, transparent, #6B351D, #923F0F, #DABFAA, #F9C17A, transparent)",
+                    background:
+                      "conic-gradient(from 0deg, transparent, var(--ember), var(--ember-soft), var(--gilt), var(--paper-deep), transparent)",
                   }}
                   animate={{ rotate: 360 }}
                   transition={{
