@@ -1,6 +1,7 @@
 import scrap1 from "@/assets/scrap-1.jpg";
 import scrap2 from "@/assets/scrap-2.jpg";
 import scrap3 from "@/assets/scrap-3.jpg";
+import scrap5 from "@/assets/scrap-5.jpg";
 import friends1 from "@/assets/meFriends/meFriends-1.jpeg";
 import friends2 from "@/assets/meFriends/meFriends-2.jpeg";
 import aseel1 from "@/assets/with aseel/meAseel-2.jpeg";
@@ -88,13 +89,14 @@ export const scrapbook = [
     note: "Sweet bites, a birthday cake, and a table made for sharing stories.",
   },
   {
-    src: scrap2,
-    caption: "Music & Dancing",
-    note: "Bring your favorite energy — there will be music, laughter, and room to dance.",
+    src: scrap5,
+    caption: "Karaoke to Sing",
+    note: "karaoke to sing your heart out.",
   },
   {
     src: scrap3,
     caption: "Memories to Keep",
     note: "A photo corner, little surprises, and beautiful moments to take home with you.",
   },
+
 ] as const;
