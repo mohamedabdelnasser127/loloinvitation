@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 
 import song from "@/assets/song.mp3";
@@ -6,6 +6,20 @@ import song from "@/assets/song.mp3";
 export function SoundControl() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    const stopInvitationSong = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      audio.pause();
+      audio.currentTime = 0;
+      setIsPlaying(false);
+    };
+
+    window.addEventListener("secret-message-unlocked", stopInvitationSong);
+    return () => window.removeEventListener("secret-message-unlocked", stopInvitationSong);
+  }, []);
 
   const togglePlayback = async () => {
     const audio = audioRef.current;

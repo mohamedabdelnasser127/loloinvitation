@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { LockKeyhole, Copy, Check, X } from "lucide-react";
 
 const secretPassword = "momoloveslolo1392006";
@@ -11,12 +11,124 @@ y=2(x-3)\left\{3\le x\le5\right\}
 y=2(7-x)\left\{5\le x\le7\right\}
 y=1.5\left\{3.75\le x\le6.25\right\}`;
 
+const birthdayPhrase = [
+  [264, 0.28],
+  [264, 0.28],
+  [297, 0.56],
+  [264, 0.56],
+  [352, 0.56],
+  [330, 1.1],
+  [264, 0.28],
+  [264, 0.28],
+  [297, 0.56],
+  [264, 0.56],
+  [396, 0.56],
+  [352, 1.1],
+] as const;
+const birthdayMelody = [
+  ...birthdayPhrase,
+  ...birthdayPhrase,
+  [297, 0.28],
+  [297, 0.28],
+  [330, 0.56],
+  [297, 0.56],
+  [440, 0.56],
+  [396, 1.1],
+  [352, 0.28],
+  [396, 0.28],
+  [440, 0.56],
+  [396, 0.56],
+  [352, 0.56],
+  [330, 1.1],
+] as const;
+const birthdayMelodyDuration = birthdayMelody.reduce((total, [, duration]) => total + duration, 0);
+const birthdayChords = [
+  [132, 165, 198],
+  [132, 166, 198],
+  [148, 185, 222],
+  [132, 166, 198],
+  [176, 220, 264],
+  [165, 198, 248],
+] as const;
+
 export function SecretMessage() {
   const [isOpen, setIsOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [unlocked, setUnlocked] = useState(false);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
+  const birthdayAudioContext = useRef<AudioContext | null>(null);
+  const birthdayTimers = useRef<number[]>([]);
+
+  useEffect(() => {
+    return () => {
+      birthdayTimers.current.forEach((timer) => window.clearInterval(timer));
+      birthdayTimers.current = [];
+      void birthdayAudioContext.current?.close();
+    };
+  }, []);
+
+  function playBirthdaySong() {
+    const audioContext = new AudioContext();
+    birthdayAudioContext.current = audioContext;
+    const compressor = audioContext.createDynamicsCompressor();
+    compressor.threshold.value = -18;
+    compressor.knee.value = 12;
+    compressor.ratio.value = 4;
+    compressor.attack.value = 0.01;
+    compressor.release.value = 0.25;
+    compressor.connect(audioContext.destination);
+
+    const playNote = (
+      frequency: number,
+      startTime: number,
+      duration: number,
+      type: OscillatorType,
+      volume: number,
+    ) => {
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+
+      oscillator.type = type;
+      oscillator.frequency.setValueAtTime(frequency, startTime);
+      gain.gain.setValueAtTime(0.0001, startTime);
+      gain.gain.exponentialRampToValueAtTime(volume, startTime + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration - 0.06);
+      oscillator.connect(gain);
+      gain.connect(compressor);
+      oscillator.start(startTime);
+      oscillator.stop(startTime + duration);
+    };
+
+    const scheduleMelody = (startTime: number) => {
+      let melodyTime = startTime;
+      for (const [frequency, duration] of birthdayMelody) {
+        playNote(frequency, melodyTime, duration, "triangle", 0.22);
+        playNote(frequency * 2, melodyTime, duration * 0.7, "sine", 0.055);
+        melodyTime += duration;
+      }
+
+      let chordTime = startTime;
+      for (let repetition = 0; repetition < 2; repetition += 1) {
+        for (const chord of birthdayChords) {
+          for (const frequency of chord) {
+            playNote(frequency, chordTime, 1.08, "sine", 0.035);
+          }
+          playNote(chord[0] / 2, chordTime, 1.08, "triangle", 0.08);
+          chordTime += 1.1;
+        }
+      }
+
+      for (let beat = 0; beat < birthdayMelodyDuration; beat += 0.55) {
+        playNote(1320, startTime + beat, 0.06, "sine", 0.025);
+      }
+    };
+
+    scheduleMelody(audioContext.currentTime + 0.05);
+    birthdayTimers.current.push(
+      window.setInterval(() => scheduleMelody(audioContext.currentTime + 0.05), birthdayMelodyDuration * 1000),
+    );
+  }
 
   function unlockMessage() {
     if (password.trim().toLowerCase() !== secretPassword) {
@@ -26,6 +138,8 @@ export function SecretMessage() {
 
     setError("");
     setUnlocked(true);
+    window.dispatchEvent(new Event("secret-message-unlocked"));
+    playBirthdaySong();
   }
 
   async function copyCode() {
@@ -40,6 +154,10 @@ export function SecretMessage() {
     setError("");
     setUnlocked(false);
     setCopied(false);
+    birthdayTimers.current.forEach((timer) => window.clearInterval(timer));
+    birthdayTimers.current = [];
+    void birthdayAudioContext.current?.close();
+    birthdayAudioContext.current = null;
   }
 
   return (
@@ -104,6 +222,22 @@ export function SecretMessage() {
               </>
             ) : (
               <>
+                <div className="secret-celebration" aria-hidden="true">
+                  <span className="secret-celebration-glow" />
+                  {Array.from({ length: 18 }, (_, index) => (
+                    <span
+                      key={index}
+                      className="secret-celebration-sparkle"
+                      style={
+                        {
+                          "--sparkle-x": `${-14 + ((index * 29) % 29)}rem`,
+                          "--sparkle-y": `${-10 - ((index * 13) % 12)}rem`,
+                          "--sparkle-delay": `${(index % 9) * 240}ms`,
+                        } as CSSProperties
+                      }
+                    />
+                  ))}
+                </div>
                 <p className="eyebrow text-ember">From Mohamed — Momo, with all my heart</p>
                 <h2 id="secret-message-title" className="mt-3 text-3xl font-semibold">
                   For my beautiful Alaa
